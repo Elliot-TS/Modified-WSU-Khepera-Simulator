@@ -3,7 +3,7 @@ A slightly modified version of the WSU Khepera Robot Simulator with custom contr
 
 # Installation and Running
 
-In order to run this program, you must [install Java 18|https://www.codejava.net/java-se/install-oracle-jdk-18-on-windows].  Then download this repository, and run the ´run.sh´ script to start the program.
+In order to run this program, you must [install Java 18](https://www.codejava.net/java-se/install-oracle-jdk-18-on-windows).  Then download this repository, and run the ´run.sh´ script to start the program.
 
 # Differences between Khepera Robot and Braitenburg Vehicles 
 The Khepera Robot has eight light and distance sensors arranged around the robot.  Two look forward, two sideways, two backward, and two diagonally forward.  In order to simulate the two omnidirectional light sensors in the Braitenburg Vehicles, I average the light value from each of the sensors on each side of the robot.
