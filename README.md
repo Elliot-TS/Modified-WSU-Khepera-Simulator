@@ -14,31 +14,31 @@ In the WSU Khepera Robot Simulator, whenever the robot crashes into an object, t
 
 # Explanation of Each Vehicle
 
-##Vehicle 1
+## Vehicle 1
 
 This vehicle has a single light sensor connected to both motors.  The brighter the light, the faster the robot goes.
 
-##Vehicle 2a
+## Vehicle 2a
 
 This vehicle has two light sensors parallel-connected to each motor -- the left sensor to the left motor, and the right sensor to the right motor.
 
-##Vehicle 2b
+## Vehicle 2b
 
 This vehicle is similar to 2a, but the sensors are cross-connected to each motor -- the left sensor to the right motor, and vice versa.
 
-##Vehicle 3a
+## Vehicle 3a
 
 Similar to 2a, but the speed of the motors is inversely proportional to the brightness of the light.
 
-##Vehicle 3b
+## Vehicle 3b
 
 Similar to 3a, but the wires are cross-connected.
 
-##Vehicle 3c
+## Vehicle 3c
 
 Similar to 3a, but with added distance sensors on each side cross-connected to the motors.  The activation of the light sensors is added to the activation of the distance sensors.
 
-##Vehicle 3d
+## Vehicle 3d
 
 Similar to 3c, but the light sensors are also cross-connected.
 
