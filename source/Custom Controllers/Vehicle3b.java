@@ -26,8 +26,8 @@ public class Vehicle3b extends VehicleController{
                               getLightBrightness(5) +
                               getLightBrightness(6)) / 4.0;
 
-        double motor1Speed = motorActivation(brightness2 / 1.5);
-        double motor2Speed = motorActivation(brightness1 / 1.5);
+        double motor1Speed = motorActivation(brightness2 / 10.0);
+        double motor2Speed = motorActivation(brightness1 / 10.0);
 
         // constrain motorSpeed to [-9, 9]
         motor1Speed = motor1Speed < -9.0 ? -9.0 : motor1Speed > 9.0 ? 9.0 : motor1Speed; 

@@ -2,9 +2,9 @@ import edu.wsu.KheperaSimulator.VehicleController;
 import java.io.*;
 
 
-public class Vehicle3a extends VehicleController{
+public class Vehicle3d extends VehicleController{
 
-	public Vehicle3a () 
+	public Vehicle3d () 
 	{
 	}
 
@@ -26,8 +26,18 @@ public class Vehicle3a extends VehicleController{
                               getLightBrightness(5) +
                               getLightBrightness(6)) / 4.0;
 
-        double motor1Speed = motorActivation(brightness1 / 10.0);
-        double motor2Speed = motorActivation(brightness2 / 10.0);
+        double distance1 = (getDistanceValue(7) +
+                            getDistanceValue(0) +
+                            getDistanceValue(1) +
+                            getDistanceValue(2)) / 4.0;
+        double distance2 = (getDistanceValue(3) +
+                            getDistanceValue(4) +
+                            getDistanceValue(5) +
+                            getDistanceValue(6)) / 4.0;
+
+
+        double motor1Speed = motorActivation(brightness2 / 10.0 + distance2);
+        double motor2Speed = motorActivation(brightness1 / 10.0 + distance1);
 
         // constrain motorSpeed to [-9, 9]
         motor1Speed = motor1Speed < -9.0 ? -9.0 : motor1Speed > 9.0 ? 9.0 : motor1Speed; 

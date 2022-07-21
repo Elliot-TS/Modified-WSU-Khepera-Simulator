@@ -158,8 +158,9 @@ public class VehicleController extends RobotController{
     public void doWork() throws Exception
 	{
         double dist = getTotalDistance();
+        int dist_limit = 700;
 
-        if (dist > 50 && !nearWall)
+        if (dist > dist_limit&& !nearWall)
         {
             bounceAngle = getRobotAngle();
             nearWall = true;
@@ -171,7 +172,7 @@ public class VehicleController extends RobotController{
         if (!bouncing)
             runVehicle();
 
-        if (!bouncing && getTotalDistance() <= 50)
+        if (!bouncing && getTotalDistance() <= dist_limit)
             nearWall = false;
 	}
 
