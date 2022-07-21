@@ -30,6 +30,8 @@ This vehicle is similar to 2a, but the sensors are cross-connected to each motor
 
 Similar to 2a, but the speed of the motors is inversely proportional to the brightness of the light.
 
+Note that the relationship between the sensor activation and the speed of the motors is `a / (activation / b)` where `a` determines the maximum speed when there is no light, and `b` determines how close the vehicle can get to the light.  In this case, `b` is tuned to allow the robot to get close enough to the light for the collision prevention mechanism to kick in, making the behavior be more interesting to watch than a pure implementation of Vehicle 3a would be.  But with a smaller value for `b`, the vehicle will just stop next to the light without turing around, which is what the pure Braitenburg vehicle would do.
+
 ## Vehicle 3b
 
 Similar to 3a, but the wires are cross-connected.
