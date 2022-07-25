@@ -1,5 +1,5 @@
 # Modified-WSU-Khepera-Simulator
-A slightly modified version of the WSU Khepera Robot Simulator with custom controllers that implement the first four vehicles in Braitenburg's Vehicles.
+A slightly modified version of the WSU Khepera Robot Simulator with custom controllers that implement the first four vehicles in Braitenburg's Vehicles.  The original WSU Khepera Robot Simulator was created by John C. Gallagher, Steven Perretta, and Duane Bolick and was released under the Q Public License.  The original copyright can be found in the "manual" folder in the "ksim_manuel_7.3.pdf" file.  Used by permission.
 
 # Installation and Running
 
@@ -80,37 +80,37 @@ The activation function in this case, as with 4a, is a bell curve with Î¼ = 7, Ï
 
 This is an empty map.
 
-![Null Map](./Map Screenshots/1 Null Map.png)
+![Null Map](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/1%20Null%20Map.png)
 
 ## Map 2 - Single Light Source
 
 This map contains a single light source above and to the right of the robot's default spawn point.
 
-![Single Light Source](./Map Screenshots/2 Single Light Source.png)
+![Single Light Source](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/2%20Single%20Light%20Source.png)
 
 ## Map 3 - Double Light Source
 
 This map contains two light sources, one above and to the right of the robot's default spawn point, and the other above and to the left of the spawn point.
 
-![Double Light Source](./Map Screenshots/3 Double Light Source.png)
+![Double Light Source](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/3%20Double%20Light%20Source.png)
 
 ## Map 4 - Vehicle 2a Hide from Light
 
 This map contains multiple light sources and several corridors in which the robot can hide from the light.
 
-![Vehicle 2a Hide from Light](./Map Screenshots/4 Vehicle 2a Hide from Light.png)
+![Vehicle 2a Hide from Light](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/4%20Vehicle%202a%20Hide%20from%20Light.png)
 
 ## Map 5 - Double Light Sources at a Distance
 
 This map contains two light sources at a greater distance apart than in Map 3.
 
-![Double Light Sources at a Distance](./Map Screenshots/5 Double Light Sources at a Distance.png)
+![Double Light Sources at a Distance](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/5%20Double%20Light%20Sources%20at%20a%20Distance.png)
 
 ## Map 6 - Find the Light
 
 This map contains multiple corridors each hiding a light source.
 
-![find the light](/https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/6%20Find%20the%20Light.png)
+![find the light](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/6%20Find%20the%20Light.png)
 
 ## Map 7 - Everybody Dance Now... Sorry
 
