@@ -11,7 +11,7 @@ public class Vehicle3a extends VehicleController{
     // Motor Activation Function
     public double motorActivation(double x) throws Exception
     {
-        return 9 / x;
+        return 9 / (x/10.0);
     }
 
     // Standard rules for the vehicle to follow
@@ -26,8 +26,8 @@ public class Vehicle3a extends VehicleController{
                               getLightBrightness(5) +
                               getLightBrightness(6)) / 4.0;
 
-        double motor1Speed = motorActivation(brightness1 / 10.0);
-        double motor2Speed = motorActivation(brightness2 / 10.0);
+        double motor1Speed = motorActivation(brightness1);
+        double motor2Speed = motorActivation(brightness2);
 
         // constrain motorSpeed to [-9, 9]
         motor1Speed = motor1Speed < -9.0 ? -9.0 : motor1Speed > 9.0 ? 9.0 : motor1Speed; 
