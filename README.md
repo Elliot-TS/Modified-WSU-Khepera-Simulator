@@ -110,19 +110,19 @@ This map contains two light sources at a greater distance apart than in Map 3.
 
 This map contains multiple corridors each hiding a light source.
 
-![Find the Light](https://github.com/Elliot-TS/Modified-WSU-Khepera-Simulator/Map\ Screenshots/6\ Find\ the\ Light.png)
+![find the light](/https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/6%20Find%20the%20Light.png)
 
 ## Map 7 - Everybody Dance Now... Sorry
 
 This map contains a small box around where the robot spawns with one light source in it.  It's main purpose is to showcase the dancing behavior of Vehicle 3a (see below).
 
-![Everybody Dance Now... Sorry](./Map Screenshots/7 Everybody Dance Now... Sorry.png)
+![Everybody Dance Now... Sorry](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/7%20Everybody%20Dance%20Now...%20Sorry.png)
 
 ## Map 8 - Thread the Needle
 
 This map contains a horizontal wall with a small opening near the top of the screen a five light sources arranged in a squashed, upside-down pentagon with the tip of the pentagon directly opposite the opening in the gate and the rest of the light sources symmetrically placed on either side of the opening.
 
-![Thread the Needle](./Map Screenshots/8 Thread the Needle.png)
+![Thread the Needle](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/8%20Thread%20the%20Needle.png)
 
 # Vehicle Behaviors
 
