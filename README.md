@@ -112,6 +112,10 @@ This map contains multiple corridors each hiding a light source.
 
 [!Find the Light](./Map Screenshots/6 Find the Light.png)
 
+## Map 7 - Everybody Dance Now... Sorry
+
+This map contains a small box around where the robot spawns with one light source in it.  It's main purpose is to showcase the dancing behavior of Vehicle 3a (see below).
+
 # Vehicle Behaviors
 
 ## Vehicle 1
@@ -156,4 +160,4 @@ All that to say, in Map 6, this vehicle takes much longer than expected to actua
 
 However, because the walls are now so close, the vehicle quicly finds itself heading straight back to the same light and seems to engage in some sort of ritualistic dancing around the light.  Often, after dancing around the light source for a bit, it will come to rest right in front of the light source where it will forever admire its beauty.  Other times, it will reverse direction and dance around it the other way.  And sometimes it will get tired of dancing after a while and head toward another light source.
 
-As a matter of fact, this dancing motion can also be seen in Map 2, though it's less pronounced since the walls are so far apart.  Map 7 was designed to better observe this vehicle's dancing motions.  Interestingly, whether the robot starts dancing clockwise or counter-clockwise around the light source seems to be pretty much random, as is when it decides to stop and when it decides to reverse directions.  I have not yet observed it make a full circle in one direction around the light source.  I suspect that it might only be able to get part way around the light source before reversing direction, but I wouldn't be surprised if it could randomly spend longer on average dancing in one direction than in the other direction and thereby dance fully around the light source.  However, every time I've observed it so far, it eventually stops the dance before making its way fully around, or else it spends a more-or-less even amount of time in each direction.
+As a matter of fact, this dancing motion can also be seen in Map 2, though it's less pronounced since the walls are so far apart.  Map 7 was designed to better observe this vehicle's dancing motions.  Interestingly, whether the robot starts dancing clockwise or counter-clockwise around the light source seems to be pretty much random, as is when it decides to stop and when it decides to reverse directions.  And while it changes direction a lot, it sometimes will prefer one direction over another, causing it to eventually dance a full circle around the light source, despite occasionally reversing direction while doing so. 
