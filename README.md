@@ -110,7 +110,7 @@ This map contains two light sources at a greater distance apart than in Map 3.
 
 This map contains multiple corridors each hiding a light source.
 
-![Find the Light](./Map\ Screenshots/6\ Find\ the\ Light.png)
+![Find the Light](https://github.com/Elliot-TS/Modified-WSU-Khepera-Simulator/Map\ Screenshots/6\ Find\ the\ Light.png)
 
 ## Map 7 - Everybody Dance Now... Sorry
 
