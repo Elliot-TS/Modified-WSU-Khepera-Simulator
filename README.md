@@ -110,11 +110,19 @@ This map contains two light sources at a greater distance apart than in Map 3.
 
 This map contains multiple corridors each hiding a light source.
 
-[!Find the Light](./Map Screenshots/6 Find the Light.png)
+![Find the Light](./Map\ Screenshots/6\ Find\ the\ Light.png)
 
 ## Map 7 - Everybody Dance Now... Sorry
 
 This map contains a small box around where the robot spawns with one light source in it.  It's main purpose is to showcase the dancing behavior of Vehicle 3a (see below).
+
+![Everybody Dance Now... Sorry](./Map Screenshots/7 Everybody Dance Now... Sorry.png)
+
+## Map 8 - Thread the Needle
+
+This map contains a horizontal wall with a small opening near the top of the screen a five light sources arranged in a squashed, upside-down pentagon with the tip of the pentagon directly opposite the opening in the gate and the rest of the light sources symmetrically placed on either side of the opening.
+
+![Thread the Needle](./Map Screenshots/8 Thread the Needle.png)
 
 # Vehicle Behaviors
 
@@ -161,3 +169,7 @@ All that to say, in Map 6, this vehicle takes much longer than expected to actua
 However, because the walls are now so close, the vehicle quicly finds itself heading straight back to the same light and seems to engage in some sort of ritualistic dancing around the light.  Often, after dancing around the light source for a bit, it will come to rest right in front of the light source where it will forever admire its beauty.  Other times, it will reverse direction and dance around it the other way.  And sometimes it will get tired of dancing after a while and head toward another light source.
 
 As a matter of fact, this dancing motion can also be seen in Map 2, though it's less pronounced since the walls are so far apart.  Map 7 was designed to better observe this vehicle's dancing motions.  Interestingly, whether the robot starts dancing clockwise or counter-clockwise around the light source seems to be pretty much random, as is when it decides to stop and when it decides to reverse directions.  And while it changes direction a lot, it sometimes will prefer one direction over another, causing it to eventually dance a full circle around the light source, despite occasionally reversing direction while doing so. 
+
+## Vehicle 3b
+
+
