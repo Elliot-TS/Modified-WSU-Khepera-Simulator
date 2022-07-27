@@ -11,7 +11,7 @@ public class Vehicle3c extends VehicleController{
     // Motor Activation Function
     public double motorActivation(double x) throws Exception
     {
-        return 9 / x;
+        return 9.0 / x;
     }
 
     // Standard rules for the vehicle to follow

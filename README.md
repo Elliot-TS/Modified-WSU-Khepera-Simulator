@@ -6,9 +6,18 @@ A slightly modified version of the WSU Khepera Robot Simulator with custom contr
 In order to run this program, you must [install Java 18](https://www.codejava.net/java-se/install-oracle-jdk-18-on-windows).  Then download this repository, and run the ´run.sh´ script to start the program.
 
 # Differences between Khepera Robot and Braitenburg Vehicles 
+
+## Position of Sensors
+
 The Khepera Robot has eight light and distance sensors arranged around the robot.  Two look forward, two sideways, two backward, and two diagonally forward.  In order to simulate the two omnidirectional light sensors in the Braitenburg Vehicles, I average the light value from each of the sensors on each side of the robot.
 
 As a result, whereas in the Braitenburg vehicles, both sensors will be activated even if the light source is on one side of the robot, in this implementation of the vehicles, only the sensors on one side will be activated.  In addition, the robot has a blind spot diagonally behind it that can cause the vehicle to slow down at unexpected times (this is most evident in vehicle 1).
+
+## Sensor Activation Values
+
+In the Khepera Robot Simulator, the values for the light sensors decrease from 500 when there is no light to 100 right at the light source.  Through experimentation, I determined that the value of the light sensor seems to be related to the distance to the light source by `log_2(x/a) * 100` where `a` is some constant whose exact value doesn't really matter.  To get the brightness, I first got the distance through the inverse of the above expression (with `a` set to 1 since it would only scale the distance), and then I use the inverse square law to get the brightness.
+
+Since the light sensors in the Khepera robot simulator are the inverse of what one would expect them to be, it shouldn't be too much of a surpise that the distance sensors are also inverted from what one might expect.  The distance sensors read values from 0 if the walls are too far away to detect to 1023 if the robot is right up against the wall.  It then falls off in a sigmoid-like manner (approximately `L - L / (1 + e^(-k(x - x_0)))` where `L = 1024`, `k = 0.6`, `x_0 = 9`, and `x` is the distance from the wall in pixels), because why not?  However, I opted not to try to extract the actual distance this time and just used the values that the sensors gave me.
 
 In the WSU Khepera Robot Simulator, whenever the robot crashes into an object, the simulation stops.  As a result, to prevent the simulation from constantly crashing, each vehicle is programmed to overwrite its default behavior if it comes too close to a wall and to turn 180 degrees, though it sometimes overshoots the 180 degrees slightly.  This doesn't fix everything as the robot can still get stuck or accidentally run into walls sometimes, but it generally does a decent job at keeping the robot from crashing so that its behaviors can be observed for a longer amount of time.
 
@@ -124,6 +133,12 @@ This map contains a horizontal wall with a small opening near the top of the scr
 
 ![Thread the Needle](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/8%20Thread%20the%20Needle.png)
 
+## Map 9 - Maze
+
+This map contains a simple maze that starts in the center (the robot's default spawn point) and ends at a light source.
+
+![Maze](https://raw.githubusercontent.com/Elliot-TS/Modified-WSU-Khepera-Simulator/main/Map%20Screenshots/9%20-%20Maze.png)
+
 # Vehicle Behaviors
 
 ## Vehicle 1
@@ -150,7 +165,7 @@ Like the last vehicle, Vehicle 2b hates light and just wants peace and darkness.
 
 In Map 3, it's all out war.  The vehicle travels back and forth between the two light sources attacking each one without rest.  In Map 5, with the light sources farther apart, the vehicle is more likely to attack each light source multiple times in a row before running the second one down.  In addition, it occasionally seems to start running away from the fight to find darkness, but it quickly changes it mind and rushes down the second light.
 
-In Map 4, the Vehicle does sometimes manage to find its way into one of the shelters, but it grows frusterated by the ever-present light before it finds the part of the shelter where there's total shade, and it instead leaves the shelter to attack the light again.
+In Map 4, the Vehicle does sometimes manage to find its way into one of the shelters, but it grows frustrated by the ever-present light before it finds the part of the shelter where there's total shade, and it instead leaves the shelter to attack the light again.
 
 ## Vehicle 3a
 
@@ -158,18 +173,32 @@ Vehicle 3a is an explorer and admirer of the beautiful/bright.  As Map 1 shows, 
 
 In Maps 3 and 5, its quest to meet other lights is met with success, and it likewise admires the second light source until it grows bored of it.  Sometimes it will head right back to the other light afterward.  Other times, it will start heading in a random direction before being lured by the other light.  And sometimes, it will learn to be content with the light it has found and lie down to bask in its light for the rest of eternity.
 
-Map 4 demonstrates just how indecisive this little robot is.  When it's surrounded by too many lights, it completely freezes up, unable to decide wich light to follow.  Or perhaps it feels that getting any closer to a light would overwhelm it with beauty, and it would prefer to stay a safe distance away.  Either way, since this robot slows down as it approaches light, if there's too much brightness around, it won't be able to get close enough to any light source to trigger the turning around mechanism. 
+Map 4 demonstrates just how indecisive this little robot is.  When it's surrounded by too many lights, it completely freezes up, unable to decide which light to follow.  Or perhaps it feels that getting any closer to a light would overwhelm it with beauty, and it would prefer to stay a safe distance away.  Either way, since this robot slows down as it approaches light, if there's too much brightness around, it won't be able to get close enough to any light source to trigger the turning around mechanism. 
 
-Map 6 demonstrates both this vehicles ability and inability to find light sources.  The first unexpected thing this map reveals about the vehicle is that even when the light source is clearly withing view, the vehicle doesn't start heading toward it unless it's close enough to it.  This is because the speed of each motor can only have a value between -9 and +9, and the speed of this motor is determinted by `k / activation` where `activation` is the value of the light sensor and `k` is some proportionality constant (90 in this case).  If the constant is too high, when the robot is any significant distance from the light source, the equation will give a value higher than 9.  Typically, what happens if the robot is traveling perpendicular to a light source is that the light sensor on the side closer to the light will read a higher value than the one on the other side (or in the case of this implementation of the Braitenburg vehicles, the sensor on the other side will read zero).  As a result, the motor on the far side continues at top speed while the motor on the other side will have a smaller speed, which causes the robot to turn toward the light.  However, if the robot is far enough from the light source, and if `k` is too big, the even if the activation on the one side of the robot is stronger, `k / activation` will still be greater than 9, so both motors would just default to top speed, making it go straight ahead.
+Map 6 demonstrates both this vehicles ability and inability to find light sources.  The first unexpected thing this map reveals about the vehicle is that even when the light source is clearly withing view, the vehicle doesn't start heading toward it unless it's close enough to it.  This is because the speed of each motor can only have a value between -9 and +9, and the speed of this motor is determined by `k / activation` where `activation` is the value of the light sensor and `k` is some proportionality constant (90 in this case).  If the constant is too high, when the robot is any significant distance from the light source, the equation will give a value higher than 9.  Typically, what happens if the robot is traveling perpendicular to a light source is that the light sensor on the side closer to the light will read a higher value than the one on the other side (or in the case of this implementation of the Braitenburg vehicles, the sensor on the other side will read zero).  As a result, the motor on the far side continues at top speed while the motor on the other side will have a smaller speed, which causes the robot to turn toward the light.  However, if the robot is far enough from the light source, and if `k` is too big, the even if the activation on the one side of the robot is stronger, `k / activation` will still be greater than 9, so both motors would just default to top speed, making it go straight ahead.
 
-So the solution would be to decrease the value of `k`.  However, that then leads to another problem where the robot will stop before it gets very close to the light source.  This is because `k / activation` will now get closer to zero even for higher sensor activation values.  Thus, I had to choose between a high value of `k` which would lead to the vehicle not turing toward light sources unless it's really close to them, or a low value of `k` that would lead to the vehicle not getting close enough to the light to trigger the turing around mechanism which makes this vehicle actually interesting to watch.  I opted for the latter.
+So the solution would be to decrease the value of `k`.  However, that then leads to another problem where the robot will stop before it gets very close to the light source.  This is because `k / activation` will now get closer to zero even for higher sensor activation values.  Thus, I had to choose between a high value of `k` which would lead to the vehicle not turning toward light sources unless it's really close to them, or a low value of `k` that would lead to the vehicle not getting close enough to the light to trigger the turning around mechanism which makes this vehicle actually interesting to watch.  I opted for the latter.
 
 All that to say, in Map 6, this vehicle takes much longer than expected to actually notice a light source.  But then, when it does, it will start heading toward it.  It still takes a while as it bounces back and forth off various walls, but it starts to slowly make progress toward the light.  Then, once it gets to the light, it follows its familiar pattern of crawling closer and then turning away.
 
-However, because the walls are now so close, the vehicle quicly finds itself heading straight back to the same light and seems to engage in some sort of ritualistic dancing around the light.  Often, after dancing around the light source for a bit, it will come to rest right in front of the light source where it will forever admire its beauty.  Other times, it will reverse direction and dance around it the other way.  And sometimes it will get tired of dancing after a while and head toward another light source.
+However, because the walls are now so close, the vehicle quickly finds itself heading straight back to the same light and seems to engage in some sort of ritualistic dancing around the light.  Often, after dancing around the light source for a bit, it will come to rest right in front of the light source where it will forever admire its beauty.  Other times, it will reverse direction and dance around it the other way.  And sometimes it will get tired of dancing after a while and head toward another light source.
 
 As a matter of fact, this dancing motion can also be seen in Map 2, though it's less pronounced since the walls are so far apart.  Map 7 was designed to better observe this vehicle's dancing motions.  Interestingly, whether the robot starts dancing clockwise or counter-clockwise around the light source seems to be pretty much random, as is when it decides to stop and when it decides to reverse directions.  And while it changes direction a lot, it sometimes will prefer one direction over another, causing it to eventually dance a full circle around the light source, despite occasionally reversing direction while doing so. 
 
 ## Vehicle 3b
 
+Vehicle 3b avoids light, but not aggressively.  It's more just indifferent to light.  Light slows it down, and it doesn't have time to be slowed down.  But it doesn't try to hide in the darkest corners of the map.  Instead, it just goes about its own business turning aside from any lights that block its path.  In Map 1, it moves at its top speed in a straight line (that sometimes changes angles after it bounces off a wall).  In Map 2, turns away from the light and then bounces back and forth between walls on a slightly curved path along the lower half of the map.  Map 3 gives a similar result.
 
+In Map 4, the differences between 2a and this vehicle are evident.  Whereas 2a tries to get away from the light at all costs and stays in the shadow once it finds it, this robot will simply continue on in the path of least resistance almost always eventually finding itself stuck in the a loop of traveling in the same slightly curved path between the outside corner of the top-left shelter and the outside coner of the bottom-left corner.  That path seems to be a sort of local minimum with the way the lights are arraged.  Even if the robot is placed in another position, it usually eventually finds itself traveling that same path.  If the robot is placed inside one of the shelters at the start, it does not rest in the shaddows.  Instead, it travels back and forth not caring if doing so takes it slightly into the light.
+
+Map 5 is slightly more interesting, as the robot manages to thread itself between both light sources, visibly swerving away from each light as it approaches it.
+
+Map 8 shows how this robot can be guided by the lights through a small opening in the wall.  In sum, one could say that this vehicle likes to move and always takes the path of least resistence.
+
+## Vehicle 3c
+
+This is the first vehicle that's actually interesting in Map 1.  Because the distance sensors are also connected to the wheels, it is able to smoothly turn away from walls rather than just suddenly turn 180 degrees when it gets too close to a wall.  It essentually treats all walls as a dull source of light that it tries to turn away from.  In Map 1, it lethgarically moves around the map curving away from walls untill it eventually gets stuck from coming so close to a wall that the speed of both wheels become essentially zero. 
+
+In Map 2, the vehicle starts heading toward the light, just like vehicle 3a.  However, because of the added values from the distance sensors, the vehicle this time stops short of the light rather than getting so close that it triggers the turning around mechanism.  Thus, this is actually closer to the true Braitenburg Vehicle 3a.
+
+Map 9 is the only map that really shows any interesting behavior.  The vehicle wanders in a zig-zag motion througout the maze.  Providing it doesn't get stuck as a result of getting too close to a wall (the smaller the distance, 
