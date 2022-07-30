@@ -201,4 +201,38 @@ This is the first vehicle that's actually interesting in Map 1.  Because the dis
 
 In Map 2, the vehicle starts heading toward the light, just like vehicle 3a.  However, because of the added values from the distance sensors, the vehicle this time stops short of the light rather than getting so close that it triggers the turning around mechanism.  Thus, this is actually closer to the true Braitenburg Vehicle 3a.
 
-Map 9 is the only map that really shows any interesting behavior.  The vehicle wanders in a zig-zag motion througout the maze.  Providing it doesn't get stuck as a result of getting too close to a wall (the smaller the distance, 
+Map 9 is the only map that really shows any interesting behavior.  The vehicle wanders in a zig-zag motion througout the maze.  After a while, it tends to get stuck too close to one of the walls so that it can no longer move to escape.  It usually manages to make most of the turns throughout the maze, but it has a tendency to prefer going straight down a corridor if possible rather than turning into side-shoots.  As a result, it doesn't typically find its way into the final corridor with the light.
+
+## Vehicle 3d
+
+This vehicle behaves the same as Vehicle 3c in Map 1, traveling at top speed and avoiding walls.  However, in Map 2, it avoids light in a similar manner as 3b.  Thus, its behavior toward light is similar to 3b, and its behavior toward walls is similar to 3c.  In Map 2 and 3, it simply wanders aimlessly around the map generally trying to stay away from light sources.
+
+In Map 4, the vehicle more easily finds its way into one of the light shelters due to its ability to avoid walls preventing it from getting stuck bouncing off the wall right next to the entrance to the shelter.  However, because it continues to move in the absense of light, it quickly leaves the shelter.
+
+Map 10 demonstrates another behavior that can also be seen in other maps such as Map 4.  When the robot is guided toward a light that is placed next to a wall, the light will often drive the robot headlong into the wall, causing it to get stuck.  In Map 4, this typically happens after the robot leaves the shelter and follows the wall toward the light.  However, this behavior only happens when the robot is sufficiently guided toward the light.  In Map 11, this behavior is not seen because there is nothing guiding the robot toward the light.
+
+## Vehicle 4a
+
+In Map 1, this vehicle moves slowly and uninterestingly.  In Map 2, it is evident that this vehicle likes light but doesn't want to get too close.  Instead, it orbits the light at a fixed distance.  In Map 3, it orbits in a dumbbell shape around both lights, as if it always tries to maintain a perfect amount of brightness hitting its sensors.  In Map 5, the vehicle orbits both lights in a figure eight pattern, again trying to maintain the perfect level of light.
+
+In Map 6, the vehicle quickly finds the light and starts orbiting around it.  However, when its orbit causes it to get too close to a wall, it abruptly turns around and starts orbiting in the other direction until it hits a wall again.  However, even so, it doesn't explore much.  It always finds the same top-right light and orbits back and forth in a semicircle around that light, at least as long as it starts in the default spawn place.  Map 12 is a variant on Map 6 where some of the walls are moved closer to the lights they hide in order to encourage the vehicle to explore more.  While it now explores a bit more, it still follows a pretty straightforward rutine of visiting each light (except the bottom left light, which it sometimes skips).
+
+Finally, Map 13 shows why this vehicle doesn't like to get too get too close to light sources.  As this map reveals, this vehicle, like the Vehicles 3a-3c, suffers from paralysis too close to lights.  However, rather than either running away from the light or running toward the light, this vehicle tries to maintain the perfect distance.
+
+## Vehicle 4b
+
+Vehicle 4b is essentially a reincarnated Vehicle 3b, except that it travels more slowly.  However, on each map, its behavior almost exactly mirrors the behaviors of 3b.
+
+## Vehicle 4c
+
+Vehicle 4c behaves like any other c/d class vehicle in Map 1.  In Maps 2 and 3, it orbits around the light sources as in 4a.  In Map 5, it starts by orbiting in a figure-eight pattern as with Vehicle 4a.  However, when it reaches the wall, rather than turn around, it starts following the wall, until it reaches the top of the map where it often gets stuck.
+
+In Map 6, it seeks out one of the lights and then tries to squeeze between it and the wall to try to orbit around it.  However, the wall forces it to get closer to the light than it would like, causing it to slow down or even get stuck sometimes.  Nevertheless, it does manage to squeeze past some of the lights, namely the top right light.  After seeming to wiggle its way through the tight spot between the light and the outside wall, it at last bursts through only to then get stuck again at the top wall.
+
+On Map 9, it doesn't do much better than 3c, but it is still able to wander around the maze.  It doesn't seem any more able to enter the final corridor with the light than Vehicle 3c.
+
+In Map 10, it stops just shy of the light, since there's no room for it to orbit around the light.
+
+## Vehicle 4d
+
+This vehicle doesn't seem to have any substantially different traits than Vehicle 3d except that it travels slowly rather than quickly in the complete absense of light.  Also, it was the only vehicle I've seen so far that actually made it all the way into the bottom-right shelter in Map 4. So while it's exact behavior feels slightly different from Vehicle 3d, it feels more like a varient of 3d rather than having an entirely different behavior set.
